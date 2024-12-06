@@ -1,5 +1,5 @@
 import sys
-from function import init, add, commit, log, checkout, diff
+from function import init, add, commit, log, checkout, diff, create_branch, merge
 
 
 if __name__ == "__main__":
@@ -37,13 +37,25 @@ commit:\t\tRecord changes to the repository\n\
         if len(sys.argv) < 3:
             print("Please provide a commit id")
             sys.exit(0)
-        checkout(int(sys.argv[2]))
+        checkout(sys.argv[2])
     elif command == "diff":
         # check what to a commit_id is provided
         if len(sys.argv) < 3:
             print("Please provide a commit id")
             sys.exit(0)
         diff(int(sys.argv[2]))
+    elif command == "branch":
+        # check if the branch name is provided
+        if len(sys.argv) < 3:
+            print("Please provide a branch name")
+            sys.exit(0)
+        create_branch(sys.argv[2])
+    elif command == "merge":
+        # check if the branch name is provided
+        if len(sys.argv) < 3:
+            print("Please provide a branch name")
+            sys.exit(0)
+        merge(sys.argv[2])
     else:
         print("Unknown command")
         sys.exit(0)
